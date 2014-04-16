@@ -1,0 +1,44 @@
+$$.ready(function () {
+    var userManager = $$.define('userManager',function(vm){
+        vm.set = function(){
+            var grid = $$.$ui('mygrid');
+            //console.info( grid.getSelectedItems() );
+        }
+
+        vm.select_page = function(i){
+            var grid = $$.$ui('mygrid');
+            grid.setData([
+                { "id":4, "realname":"富士康1", "name" : '王小力1' } ,
+                { "id":4, "realname":"富士康2", "name" : '王小力2' } ,
+                { "id":4, "realname":"富士康3", "name" : '王小力3' }
+            ]);
+
+
+
+            grid.getPager().totalcount = 200;
+            grid.getPager().pagesize = 5;
+        }
+
+        vm.fnDelete = function( item ){
+            //alert(item.de_name);
+            var grid = $$.$ui('mygrid');
+            //console.info( grid.getSelectedItems() );
+            //console.info( item )
+        }
+    });
+
+    $$.scan();
+
+    setTimeout(function(){
+        var grid = $$.$ui('mygrid');
+        grid.setData([
+            { "id":41, "realname":"富士康1", "name" : '王小力1' } ,
+            { "id":42, "realname":"富士康2", "name" : '王小力2' } ,
+            { "id":43, "realname":"富士康3", "name" : '王小力3' }
+        ]);
+        //grid.setTotalCount( 100 , 10 );
+        grid.getPager().totalcount = 100;
+        grid.getPager().pagesize = 5;
+
+    },200);
+});

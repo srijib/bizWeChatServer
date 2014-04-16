@@ -1,0 +1,85 @@
+package cn.yikuair.db.sql;
+
+import java.io.Serializable;
+import java.sql.Connection;
+import java.sql.DriverManager;
+
+import org.apache.log4j.Logger;
+
+import cn.yikuair.base.Log;
+
+public class Sql implements Serializable{
+	private static final long serialVersionUID = 2250160699642315701L;
+	private static Connection conn = null;
+	static Logger logger = Log.getLogger(Sql.class);
+	public static Connection getConn(){
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/mysql?useUnicode=true&autoReconnect=true&characterEncoding=UTF-8","root","");												
+		} catch (Exception e) {	
+			e.printStackTrace();
+		}
+		return conn;
+	}
+	
+	/** 
+	* @Title: main 
+	* @Description: TODO(这里用一句话描述这个方法的作用) 
+	* @param @param args    设定文件 
+	* @return void    返回类型 
+	* @throws 
+	*/
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		//ConnPool.createPool();
+		ConnObject conn1 = ConnPool.getConnection();
+		System.out.println(conn1.isBusy());
+		System.out.println(conn1.getConnection());
+		
+		ConnObject conn2 = ConnPool.getConnection();
+		System.out.println(conn2.isBusy());
+		System.out.println(conn2.getConnection());
+		
+		ConnObject conn3 = ConnPool.getConnection();
+		System.out.println(conn3.isBusy());
+		System.out.println(conn3.getConnection());
+		
+		
+		
+		ConnObject conn4 = ConnPool.getConnection();
+		System.out.println(conn4.isBusy());
+		System.out.println(conn4.getConnection());
+		
+		
+		
+		ConnObject conn5 = ConnPool.getConnection();
+		System.out.println(conn5.isBusy());
+		System.out.println(conn5.getConnection()+"---"+conn5.isBusy());
+		
+		System.out.println("size:"+ConnPool.connections.size());
+		
+		ConnObject conn6 = ConnPool.getConnection();
+		System.out.println(conn6.isBusy());
+		System.out.println("ttt:"+conn6.getConnection()+"---"+conn6.isBusy());
+		
+		System.out.println("equal::"+conn5.equals(conn6));
+		
+		System.out.println("size:"+ConnPool.connections.size());
+		
+		ConnObject conn7 = ConnPool.getConnection();
+		System.out.println(conn7.isBusy());
+		System.out.println(conn7.getConnection());
+		
+		ConnObject conn8 = ConnPool.getConnection();
+		System.out.println(conn8.isBusy());
+		System.out.println(conn8.getConnection());
+		
+		System.out.println("-----------------");
+		
+		for(int i=0,j=ConnPool.connections.size();i<j;i++){
+			System.out.println("i::"+ConnPool.connections.get(i).getConnection()+ConnPool.connections.get(i).isBusy());
+		}
+		
+		logger.debug("test");
+	}
+}

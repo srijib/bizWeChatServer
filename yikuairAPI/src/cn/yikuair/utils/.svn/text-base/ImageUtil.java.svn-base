@@ -1,0 +1,150 @@
+package cn.yikuair.utils;
+
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.geom.AffineTransform;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.util.Properties;
+
+import javax.imageio.ImageIO;
+
+import org.apache.log4j.Logger;
+
+import cn.yikuair.base.Log;
+
+public class ImageUtil {
+	
+	private static Logger logger = Log.getLogger(ImageUtil.class);
+	public static boolean subByteToImg(byte[] bytes,String path,int ...ints){
+		int len = ints.length;
+		String imgType = path.substring(path.lastIndexOf(".")+1);
+		try{
+			File file=new File(path);
+			FileOutputStream out = new FileOutputStream(file);
+			out.write(bytes);
+			out.flush();
+			out.close();
+			
+			int w=1,h=1,x=0,y=0;
+			
+			if(len>=2){
+				w = ints[0];
+				h = ints[1];
+			}
+			if(len>=4){
+				x = ints[2];
+				y = ints[3];
+			}
+			if(len>=2){				
+				InputStream in = new FileInputStream(file); 
+				BufferedImage bi = ImageIO.read(in);
+				BufferedImage bufferedImage = new BufferedImage(w, h, BufferedImage.TYPE_INT_RGB);
+				Graphics g = bufferedImage.getGraphics();
+				
+				 
+				
+				int oriW = bi.getWidth();
+				int oriH = bi.getHeight();
+				int left = 0,top = 0;
+				
+				if(w>oriW||h>oriH){
+					if(oriW<w){
+						left = (w-oriW)/2;
+					}
+					if(oriH<h){
+						top = (h-oriH)/2;
+					}
+					g.setColor(Color.white);
+					g.fillRect(0, 0, w, h);
+					g.drawImage(bi, left, top, null);
+				} else {
+					g.drawImage(bi.getSubimage(x, y, w, h),0,0,null);
+				}
+				g.dispose();
+				ImageIO.write(bufferedImage,imgType,file);
+			} 
+			
+		} catch(Exception ex){
+			ex.printStackTrace();
+		}
+		
+		
+		return true;
+	}
+	
+	
+	public static int[] averageSize(int oriW,int oriH){
+		int newWidth = 0,newHeight = 0;  
+		if(oriW<=300&&oriH<=300){
+			newWidth = oriW;
+			newHeight = oriH;
+		}
+		double rate1 = ((double) oriW) / (double) 100 + 0.1;   
+        double rate2 = ((double) oriH) / (double) 100 + 0.1; 
+        double rate = rate1 > rate2 ? rate1 : rate2;
+        newWidth = (int) (((double) oriW) / rate);   
+        newHeight = (int) (((double) oriH) / rate);
+		
+        int []_wh = {newWidth,newHeight};
+        return _wh;
+	}
+	
+	
+	
+	public static void compressImg(byte[] bytes,String path){
+		//http://www.iteye.com/topic/266585
+		
+		String imgType = path.substring(path.lastIndexOf(".")+1);
+		
+		try{
+			FileUtil.createPath(path);
+			logger.debug("path:"+path);
+			File file=new File(path);
+			FileOutputStream out = new FileOutputStream(file);
+			out.write(bytes);
+			out.flush();
+			out.close();
+			InputStream in = new FileInputStream(file); 
+			BufferedImage bi = ImageIO.read(in);
+			int oriW = bi.getWidth();
+			int oriH = bi.getHeight();
+			
+			int[] _wh =  averageSize(oriW, oriH);
+			
+			
+			//生成图像变换对象
+			AffineTransform transform = new AffineTransform();
+			
+			double sx = (double)_wh[0]/oriW;//小/大图像的宽度比例   
+            double sy = (double)_wh[1]/oriH;//小/大图像的高度比例 
+			transform.setToScale(sx,sy);// 设置图像转换的比例   
+            //生成图像转换操作对象   
+			  
+			BufferedImage bufferedImage = new BufferedImage(_wh[0], _wh[1], BufferedImage.TYPE_INT_RGB);
+            Graphics2D gd2 = bufferedImage.createGraphics();
+            gd2.drawImage(bi, transform,null);
+            gd2.dispose();
+			ImageIO.write(bufferedImage, imgType, file);
+	
+		} catch(Exception ex){
+			ex.printStackTrace();
+		}
+	}
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Properties property = Conf.getProperty();
+		String path = property.getProperty("path.imgpath");
+		byte[]b = FileUtil.fileToByte(path+"/img/id.jpg");
+		subByteToImg(b,path+"/small.jpg",640,320,0,0);
+		//subByteToImg(b,path+"/sub5.jpg");
+		compressImg(b,path+"/comww.jpg");
+		
+	}
+
+}

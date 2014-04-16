@@ -1,0 +1,26 @@
+log4j.rootLogger =debug,A,B,C
+
+log4j.appender.A = org.apache.log4j.ConsoleAppender
+log4j.appender.A.Target = System.out
+log4j.appender.A.layout = org.apache.log4j.PatternLayout
+log4j.appender.A.layout.ConversionPattern = [%d]-%-5p (%F:%L)|%m%n
+
+
+log4j.appender.B = org.apache.log4j.RollingFileAppender
+log4j.appender.B.File = /Users/yikuair/html/log/log.log
+log4j.appender.B.Append = true
+log4j.appender.B.Threshold = DEBUG
+log4j.appender.B.MaxFileSize = 5000kb
+log4j.appender.B.MaxBackupIndex = 100
+log4j.appender.B.layout = org.apache.log4j.PatternLayout
+log4j.appender.B.layout.ConversionPattern = %p %t %c - %m%n
+
+
+log4j.appender.C = org.apache.log4j.DailyRollingFileAppender
+log4j.appender.C.File = /Users/yikuair/html/log/error.log 
+log4j.appender.C.Append = true
+log4j.appender.C.Threshold = ERROR 
+log4j.appender.C.layout = org.apache.log4j.PatternLayout
+log4j.appender.C.layout.ConversionPattern = %p %t %c - %m%n
+log4j.appender.C.DatePattern=yyyy-MM-dd'_error.log'
+

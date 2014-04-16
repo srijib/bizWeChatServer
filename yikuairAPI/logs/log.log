@@ -1,0 +1,4 @@
+DEBUG main cn.yikuair.test.Log4j - debug
+ERROR main cn.yikuair.test.Log4j - error
+DEBUG main cn.yikuair.test.Log4j - debug
+ERROR main cn.yikuair.test.Log4j - error

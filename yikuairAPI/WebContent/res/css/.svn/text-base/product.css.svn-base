@@ -1,0 +1,171 @@
+#j_detailImgBlock{
+	clear: both;
+	width: 100%;
+	padding:0 0 20px;
+	border-top: 1px solid #fff;
+	overflow: hidden;
+}
+#j_detailImgWrapper{
+	width:100%;
+	position:relative;	/* On older OS versions "position" and "z-index" must be defined, */
+	overflow:hidden;
+	background:white;
+	margin: 0 auto;
+	padding: 0 auto;
+}
+#j_detailImgScroller{
+	float: left;
+	padding: 0;
+	background:red;
+}
+#j_detailImgList{
+	list-style:none;
+	display:block;
+	float:left;
+	height:100%;
+	padding:0;
+	margin:0;
+	text-align:left;
+}
+#j_detailImgList li{
+	width:100%;
+	overflow: hidden;
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	-o-box-sizing:border-box;
+	box-sizing:border-box;
+	display:block; float:left;
+	text-align:center;
+	font-family:georgia;
+	font-size:18px;
+	line-height:140%;
+}
+
+#j_imgNav{
+	position:relative;
+	z-index:101;
+	padding:0;
+	width:100%;
+	height:30px;
+	text-align: center;
+	clear: both;
+	margin-top:-40px;
+	
+	
+}
+#j_indicator{
+	display: inline-block;
+	margin:0 auto;
+	padding: 0 auto;
+	
+}
+#j_indicator li{
+	display:inline-block;
+	list-style:none;
+	padding:0; margin:0;
+	text-indent:-9999em;
+	width:8px; height:8px;
+	border-radius:4px;
+	background:#ddd;
+	overflow:hidden;
+	margin-right:4px;
+}
+#j_indicator .active{
+	background: #4ca6db;
+}
+#j_indicator > li:last-child {
+	margin:0;
+}
+.introduce{
+	position:relative;
+	height:60px;
+	border-top:1px solid #ddd;
+	width:99%;
+	margin:0 auto;
+}
+.introduce h2{
+	position:absolute;
+	left:10px;
+	top:5px;
+	color:black;
+	font: bold 20px/20px arial;
+}
+.introduce time{
+	position:absolute;
+	right:10px;
+	top:5px;
+	color: #ddd;
+	font: normal 15px/15px arial;
+}
+.introduce .price{
+	position:absolute;
+	bottom:10px;
+	left:15px;
+	font: normal 15px/15px arial;
+}
+.introduce .price .cur_price{
+	font: normal 15px/15px arial;
+}
+.introduce .price .cur_price b{
+	color:red;
+}
+.introduce .price .ori_price{
+	padding-left:10px;
+	color: #ddd;
+	font: normal 15px/15px arial;
+	text-decoration:line-through;
+}
+.introduce .total_buy{
+	position:absolute;
+	bottom:10px;
+	right:10px;
+	color: #ddd;
+	font: normal 15px/15px arial;
+}
+.product_detail_title{
+	height:25px;
+	text-indent:1em;
+	background:url(i/line.png);
+	color:white;
+	font: normal 15px/25px arial;
+}
+.product_detail_content{
+	padding-bottom:20px!important;
+}
+.product_detail_content .d_div{
+	width:100%;
+	text-align:center;
+}
+
+.product_detail_content img{
+	margin:10px auto;
+}
+
+.product_detail_content .detail{
+	margin: 0 10px;
+	color:#ddd;
+}
+.go_buy{
+	display:block;
+	margin:10px auto 0;
+	width:291px;
+	height:48px;
+	color:white;
+	background:url(i/btn.png);
+	background-size:291px 48px;
+	font:normal 20px/48px arial;
+	text-align:center;
+	clear:both;
+}
+
+.ul_product_list{
+	width:90%;
+	margin:0 auto;
+	padding-bottom:30px;
+}
+.ul_product_list li{
+	margin-top:20px;
+	width:100%;
+	border:1px solid #ddd;
+}
+

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE urlrewrite PUBLIC "-//tuckey.org//DTD UrlRewrite 3.2//EN"
+        "http://tuckey.org/res/dtds/urlrewrite3.2.dtd">
+<urlrewrite>
+    <rule>
+        <from>/a/(\w+)$</from>
+        <to>/WEB-INF/api/$1.jsp</to>
+    </rule>
+    <rule>
+        <from>/a/(\w+)/(\w+)$</from>
+        <to>/WEB-INF/api/$1_$2.jsp</to>
+    </rule>
+    <rule>
+        <from>/a/(\w+)/(\w+)/(\w+)$</from>
+        <to>/WEB-INF/api/$1_$2_$3.jsp</to>
+    </rule>
+    
+    
+    
+    <rule>
+        <from>/page/(\w+)$</from>
+        <to>/WEB-INF/page/$1.jsp</to>
+    </rule>
+    
+    <rule>
+        <from>/page/(\w+)/(\w+)$</from>
+        <to>/WEB-INF/page/$1_$2.jsp</to>
+    </rule>
+    
+    <rule>
+        <from>/admin/(\w+)$</from>
+        <to>/WEB-INF/admin/$1.jsp</to>
+    </rule>
+    
+    <rule>
+        <from>/admin/(\w+)/(\w+)$</from>
+        <to>/WEB-INF/admin/$1_$2.jsp</to>
+    </rule>
+    
+</urlrewrite>
+

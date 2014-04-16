@@ -1,0 +1,101 @@
+package cn.yikuair.utils;
+
+import java.io.BufferedInputStream;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.URL;
+
+import javax.net.ssl.SSLSession;
+import javax.servlet.http.HttpServletRequest;
+
+import com.sun.net.ssl.HostnameVerifier;
+import com.sun.net.ssl.HttpsURLConnection;
+
+public class HttpUtil {
+	
+	private static final String DEPRECATION = "deprecation";
+
+	public static String getStr(HttpServletRequest r, String attr, String not_found_value){
+		String v = r.getParameter(attr);
+		if (v==null)
+			return not_found_value;
+		return v;
+	}
+	
+	 
+      
+    private static void trustAllHttpsCertificates() throws Exception {  
+        javax.net.ssl.TrustManager[] trustAllCerts = new javax.net.ssl.TrustManager[1];  
+        javax.net.ssl.TrustManager tm = new miTM();  
+        trustAllCerts[0] = tm;  
+        javax.net.ssl.SSLContext sc = javax.net.ssl.SSLContext  
+                .getInstance("SSL");  
+        sc.init(null, trustAllCerts, null);  
+        javax.net.ssl.HttpsURLConnection.setDefaultSSLSocketFactory(sc  
+                .getSocketFactory());  
+    }  
+  
+    static class miTM implements javax.net.ssl.TrustManager,  
+            javax.net.ssl.X509TrustManager {  
+        public java.security.cert.X509Certificate[] getAcceptedIssuers() {  
+            return null;  
+        }  
+  
+        public boolean isServerTrusted(  
+                java.security.cert.X509Certificate[] certs) {  
+            return true;  
+        }  
+  
+        public boolean isClientTrusted(  
+                java.security.cert.X509Certificate[] certs) {  
+            return true;  
+        }  
+  
+        public void checkServerTrusted(  
+                java.security.cert.X509Certificate[] certs, String authType)  
+                throws java.security.cert.CertificateException {  
+            return;  
+        }  
+  
+        public void checkClientTrusted(  
+                java.security.cert.X509Certificate[] certs, String authType)  
+                throws java.security.cert.CertificateException {  
+            return;  
+        }  
+    }  
+	
+	@SuppressWarnings(DEPRECATION)
+	public static String getUrlContent(String url,String encoding) throws Exception{
+		StringBuffer content = new StringBuffer();
+		HostnameVerifier hv = new HostnameVerifier() {  
+	        @SuppressWarnings("unused")
+			public boolean verify(String urlHostName, SSLSession session) {  
+	            System.out.println("Warning: URL Host: " + urlHostName + " vs. "  
+	                               + session.getPeerHost());  
+	            return true;  
+	        }
+
+			@Override
+			public boolean verify(String arg0, String arg1) {
+				// TODO Auto-generated method stub
+				return false;
+			}  
+	    }; 
+		trustAllHttpsCertificates();  
+		
+		HttpsURLConnection.setDefaultHostnameVerifier(hv);
+		try{
+			URL u = new URL(url);
+			InputStream in = new BufferedInputStream(u.openStream());
+			InputStreamReader theHTML = new InputStreamReader(in, encoding);
+			int c;
+			while ((c = theHTML.read()) != -1) {
+				content.append((char) c);
+			}
+			return content.toString();
+		} catch(Exception ex){
+			ex.printStackTrace();
+			return "";
+		}
+	}
+}

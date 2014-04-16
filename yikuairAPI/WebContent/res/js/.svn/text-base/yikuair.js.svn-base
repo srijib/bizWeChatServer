@@ -1,0 +1,11 @@
+$(function () {
+    var wh,ww;//window 高宽
+    var $frame = $(".frame_left,.frame_right");
+
+    (function () {
+        wh = $(window).height(),ww = $(window).width();
+        $frame.css("height",wh);
+        setTimeout(arguments.callee,500);
+    })();
+});
+

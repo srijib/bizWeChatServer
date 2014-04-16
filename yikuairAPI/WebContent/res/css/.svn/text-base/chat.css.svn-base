@@ -1,0 +1,13 @@
+.dialog{
+	float:left;
+	height:100%;
+	width:50%;
+}
+.dialog1 .contentBoard,.dialog2 .contentBoard{
+	width:100%;
+	height:500px;
+	background:red;
+}
+.dialog2 .contentBoard{
+	background:green;
+}

@@ -1,0 +1,343 @@
+input , textarea{
+    outline: none;
+}
+.frame_left {
+    position: absolute;
+    left: 0;
+    top:0;
+    width: 200px;
+    background: #2b303f;
+    height: 1000px;
+}
+.frame_right {
+    margin-left:200px;
+    height: 1000px;
+    background: #eeeff2;
+}
+.company_logo {
+    height: 60px;
+    width: 200px;
+    text-align: center;
+    border-bottom: 1px solid #393f52;
+    vertical-align:middle;
+    display:table-cell;
+    overflow: hidden;
+}
+.mt_30 {
+    margin-top:30px!important;
+}
+.company_logo img{
+    _margin-top:expression(this.offsetHeight<60?(60-this.offsetHeight)/2:0);
+}
+
+.jusridiciton_list li {
+    position: relative;
+    height: 50px;
+    width: 100%;
+    border-bottom: 1px solid #393f52;
+    overflow: hidden;
+}
+.jusridiciton_list .active a , .jusridiciton_list li a:hover{
+    display: block;
+    width: 100%;
+    height: 100%;
+    background:#1a1e2a;
+    color: white;
+}
+.jusridiciton_list li a {
+    display: block ;
+    color: gray;
+    padding-left:30px;
+    font: normal 15px/50px arial;
+}
+.jusridiciton_list .active i,.jusridiciton_list a:hover i {
+    position: absolute;
+    display: block;
+    width: 5px;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: #18699e;
+}
+.frame_right .top_nav{
+    height: 60px;
+    width: 100%;
+}
+.top_nav{
+    background: #5b6d85;
+}
+.c_exit {
+    float: right;
+    display: block;
+    height: 30px;
+    width: 100px;
+    margin:15px 25px 0 0;
+    font: normal 13px/30px arial;
+    border:1px solid #333d4b ;
+    background:#4e5c70;
+    color:white;
+    border-radius: 5px;
+    text-align: center;
+}
+.grid {
+    width: 95%;
+    margin: 20px auto 0;
+    border: 1px solid #d9dfe7;
+}
+.grid .grid_title{
+    height: 38px;
+    background: #f5f7fa;
+    border-bottom:1px solid #d9dfe7
+}
+.grid .grid_title em {
+    display: block;
+    margin-left: 20px;
+    height: 38px;
+    font: normal 15px/38px arial;
+    color: gray;
+}
+.grid_content {
+    width: 90%;
+    padding: 20px 3% 20px 7%;
+    background: white;
+    text-align: left;
+}
+.grid_content .input_parent,.grid_content .search_parent{
+    float: left;
+    width: 150px;
+    padding: 10px 0;
+    height: 30px;
+    overflow: hidden;
+}
+.grid_content .search_parent{
+    float: left;
+}
+.grid_content .input_parent label{
+    float: left;
+    width: 50px;
+    padding-right: 10px;
+    text-align: right;
+}
+.grid_content .input_parent input,.grid_content .input_parent select {
+    width: 80px;
+    float: left;
+    padding-left: 5px;
+    border: 1px solid #c6c6c6;
+}
+.grid_content .search_parent .c_search {
+    cursor: pointer;
+    position: relative;
+    float: right;
+    padding: 4px 10px 4px 40px;
+    width: 45px;
+    background: #1889c1;
+    color: white;
+    border-radius: 5px;
+}
+.grid_content .search_parent .c_search i {
+    display: block;
+    position: absolute;
+    left: 10px;
+    top:3px;
+    width: 18px;
+    height: 18px;
+    background: url(i/search.png);
+}
+.button_list {
+    margin: 0 auto;
+    width: 95%;
+}
+.button_list a ,.c_addUser,.message_submit,.upload{
+    float: left;
+    padding: 4px 8px;
+    margin: 10px;
+    color:white;
+    background: #1889c1;
+    border-radius: 5px;
+}
+
+
+
+.c_addUserPar {
+    width: 100%;
+    text-align: center;
+}
+
+.c_addUser{
+    float: none;
+    margin: 0 auto;
+}
+
+
+.c_addUserDialog {
+    position: relative;
+    width: 300px;
+    height: 380px;
+    margin: 0 auto;
+    background:white;
+}
+
+.c_close {
+    cursor: pointer;
+    position: absolute;
+    display: block;
+    width: 24px;
+    height: 24px;
+    right: 5px;
+    top:5px;
+    background: url(i/close.png);
+}
+
+.c_addUserDialog h2{
+    height: 35px;
+    width: 100%;
+    text-indent: 20px;
+    font: normal 14px/35px arial;
+    border-bottom: 2px solid #f5f7fa;
+}
+
+.c_addUserDialog div {
+    height: 30px;
+    margin-top: 5px;
+}
+
+.c_addUserDialog label {
+    float: left;
+    width: 80px;
+    padding-right: 20px;
+    text-align: right;
+}
+
+.c_addUserDialog .radio_sex{
+    width: auto;
+}
+.dialogTip {
+    padding:20px;
+    text-align:center;
+    background:white;
+}
+
+
+/*账户设置*/
+
+.accountSetting {
+    width: 100%;
+}
+.accountSetting .td1 {
+    width:70px;
+}
+.accountSetting .td2 {
+    width: auto;
+}
+
+.uploadHeader,.submitHeader {
+    padding: 4px 8px;
+    margin: 10px;
+    color:white;
+    background: #1889c1;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.filterHeader {
+    display: block;
+    margin: 10px;
+    width: 86px;
+    height: 86px;
+    background: url(i/ima_head_big.png);
+}
+
+.accountSetting textarea{
+    margin: 10px;
+    padding:4px 8px;
+    width: 80%;
+    height: 80px;
+}
+
+/*账户发送消息*/
+.title_tabs {
+    position: relative;
+    width: 100%;
+    height: 30px;
+    background: rgb(239,239,239);
+}
+.title_tabs li {
+    float: left;
+    width: 33.3%;
+    text-align: center;
+
+}
+.title_tabs li  a{
+    display: block;
+    width: 100%;
+    color: black;
+    background: rgb(239,239,239);
+    font: normal 15px/30px arial;
+}
+.title_tabs .active  a{
+    background: white;
+}
+
+.account_message .tab1{
+    width: 90%;
+    height: 100px;
+    border: 1px solid #d1d1d1;
+    margin: 20px auto;
+}
+.account_message .tab1 textarea,.account_message .tab3 textarea{
+    padding: 8px;
+    width: 100%;
+    height: 100px;
+    border: 0;
+}
+.message_submit{
+    float: right;
+    margin-right: 20px;
+    cursor: pointer;
+}
+.account_message .tab2,.account_message .tab3{
+    width: 90%;
+    margin: 20px auto;
+}
+.tab2_nav span,.tab3_nav span{
+    font: normal 13px/45px arial;
+}
+.account_message .tab2 .frame_img,.account_message .tab3 .frame_img{
+    padding: 8px;
+    width: 100%;
+    height: 200px;
+    border: 1px solid #d1d1d1;
+}
+.account_message .tab2 .frame_img img,.account_message .tab3 .frame_img img{
+    background: black;
+}
+.account_message .tab2 .frame_img .deleteImg,.account_message .tab3 .frame_img .deleteImg{
+    padding:10px;
+}
+.messageline{
+    float: right;
+    padding: 4px 8px;
+    margin: 8px;
+}
+.account_message .tab3 .img_content_title,.img_content_url{
+    width: 100%;
+    height: 35px;
+    _line-height:35px;
+    padding: 0 7px;
+}
+.tab3_1{
+    position: relative;
+    margin: 15px 0;
+    padding: 8px;
+    width: 100%;
+    height: 100px;
+    border: 1px solid #d1d1d1;
+    overflow: hidden;
+    background: white;
+}
+.tab3_1 textarea {
+    position: absolute;
+    left:0;
+    top:0;
+    width: 100%!important;
+    margin: 0;
+}
